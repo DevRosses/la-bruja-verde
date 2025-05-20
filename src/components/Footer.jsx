@@ -8,6 +8,7 @@ function Footer() {
         marginTop: "20px",
       }}
     >
+      <h2>Footer</h2>
       <p>&copy; 2024 - Mi Aplicación React</p>
     </footer>
   );

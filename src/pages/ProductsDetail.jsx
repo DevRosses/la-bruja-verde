@@ -2,7 +2,7 @@ import img1 from "../assets/images/Products/c1.jpg";
 import img2 from "../assets/images/Products/e1.jpg";
 import img3 from "../assets/images/Products/f1.jpg";
 
-function Productos() {
+function ProductsDetail() {
   const images = [img1, img2, img3];
 
   return (
@@ -15,6 +15,7 @@ function Productos() {
           marginTop: "20px",
         }}
       >
+        <h2>Bienvenido a la sección deldetalle de productos</h2>
         {images.map((src, index) => (
           <img
             key={index}
@@ -28,4 +29,4 @@ function Productos() {
   );
 }
 
-export default Productos;
+export default ProductsDetail;

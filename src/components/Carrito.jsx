@@ -2,21 +2,17 @@ import style from "../assets/styles/components/Carrito.module.css";
 import Card from "./CarritoCard";
 
 export default function Carrito({
-  productos,cantidades,
+  productos,
+  cantidades,
   restarContador,
   sumarContador,
 }) {
-  // Si no hay productos en el carrito, no se renderiza nada
-  if (!productos || productos.length === 0) {
-    return null;
-  }
- 
   // Calcular el total del carrito
   const total = productos.reduce((subTotal, producto) => {
     return subTotal + producto.precio * (cantidades[producto.id] || 1);
-
   }, 0);
-  console.log("total desde carrito", total);
+
+  console.log("total desde carrito", total.toFixed(2));
 
   return (
     <div className={style.carritoContainer}>
