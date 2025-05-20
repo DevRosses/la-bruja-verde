@@ -34,8 +34,9 @@ export default function CarritoCard({
       <div>
         <p className={style.carritoCard_etiqueta}>Precio total</p>
         <span className={style.carritoCard_valor}>
-          ${(cantidades[producto.id] * Number(producto.precio)).toFixed(2)}
-        </span>
+  ${(cantidades[producto.id] * Number(producto.precio)).toFixed(2)}
+</span>
+
       </div>
 
       <div className="carritoCard_contenedorButton">

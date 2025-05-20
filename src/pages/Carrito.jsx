@@ -1,5 +1,5 @@
 import style from "../assets/styles/components/Carrito.module.css";
-import Card from "./CarritoCard";
+import Card from "../components/CarritoCard";
 
 export default function Carrito({
   productos,
