@@ -12,7 +12,7 @@ import Carrito from "../pages/Carrito";
 import {
   dispararSweetBasico,
   dispararSweetConfirmacion,
-} from "../utils/sweetAlert";
+} from "../utils/SweetAlert";
 
 function App() {
   const [productosCarrito, setProductosCarrito] = useState([]);
