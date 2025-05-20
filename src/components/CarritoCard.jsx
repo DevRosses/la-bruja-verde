@@ -1,36 +1,56 @@
 import Button from "../components/ui/Button";
 
-import "../assets/styles/components/CarritoCard.module.css";
+import style from "../assets/styles/components/CarritoCard.module.css";
 
-export default function CarritoCard({ producto, quitarProducto }) {
-  function quitar() {
-    console.log("quitarProducto PASO 1");
-    quitarProducto(producto);
-  }
-
-  
-
+export default function CarritoCard({
+  producto,
+  cantidades,
+  restarContador,
+  sumarContador,
+}) {
   return (
-    <div className="product-card">
-      <h3 className="product-title">{producto.nombre}</h3>
+    <div className={style.carritoCard}>
+      <h3 className={style.carritoCard_title}>{producto.nombre}</h3>
+      <div className="carritoCard_contenedorDescripcion">
+        <p className={style.carritoCard_descripcion}> {producto.descripcion}</p>
+      </div>
       <img
         src={producto.imagen}
         alt={producto.nombre}
-        className="product-image"
+        className={style.carritoCard_image}
       />
-      <span>{producto.cantidad}</span>
-      <p className="old-price">${producto.precioAnterior}</p>
-      <p className="new-price">${producto.precio}</p>
-      <p className="discount">{producto.descuento}% OFF</p>
-      <p className="transfer-price">
-        ${producto.precioTransferencia} con Transferencia o depósito
-      </p>
+      <div>
+        <span className={style.carritoCard_cantidad}>
+          {cantidades[producto.id] || 1}
+        </span>
+      </div>
+      <div>
+        <p className={style.carritoCard_etiqueta}>Precio Unitario</p>
+        <span className={style.carritoCard_valor}>
+          ${Number(producto.precio).toFixed(2)}
+        </span>
+      </div>
 
-      <Button
-        className="buy-button"
-        text="Eliminar del carrito"
-        onClick={quitar}
-      />
+      <div>
+        <p className={style.carritoCard_etiqueta}>Precio total</p>
+        <span className={style.carritoCard_valor}>
+          ${(cantidades[producto.id] * Number(producto.precio)).toFixed(2)}
+        </span>
+      </div>
+
+      <div className="carritoCard_contenedorButton">
+        <Button
+          className={style.carritoCard_buyButton}
+          text="+"
+          onClick={sumarContador}
+        />
+
+        <Button
+          className={style.carritoCard_buyButton}
+          text="-"
+          onClick={restarContador}
+        />
+      </div>
     </div>
   );
 }

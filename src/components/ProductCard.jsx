@@ -1,63 +1,60 @@
 import Button from "../components/ui/Button";
-import { useState } from "react";
 
-import "../assets/styles/components/ProductCard.module.css";
+import styles from "../assets/styles/components/ProductCard.module.css";
 
-export default function ProductCard({ product, agregarProducto }) {
-  const [cantidad, setCantidad] = useState(1);
-
-  /*function agregar() {
-    console.log("agregarProducto PASO 1");
-    agregarProducto(product);
-  }
-
-  function quitar() {
-    console.log("quitarProducto PASO 1");
-    quitarProducto(product);
-  }*/
-
+export default function ProductCard({
+  product,
+  agregarProducto,
+  cantidad,
+  restarContador,
+  sumarContador,
+}) {
   function agregarAlCarrito() {
-    if (cantidad < 1) return;
-    agregarProducto(product, cantidad );
-    console.log("agregarProducto PASO 2");
-  }
-
-  function sumarContador() {
-    console.log("agregarProducto PASO 1");
-    //agregarProducto(product);
-    setCantidad(cantidad + 1);
-  }
-  function restarContador() {
-    console.log("quitarProducto PASO 1");
-    //quitarProducto(product);
-    if (cantidad > 1) {
-      setCantidad(cantidad - 1);
+    if (cantidad <= 0) {
+      alert("La cantidad debe ser mayor a 0");
+      return;
     }
+    agregarProducto(product, cantidad);
   }
+  
 
   return (
-    <div key={product.id} className="product-card">
+    <div key={product.id} className={styles.productCard}>
       <img
         src={product.imagen}
         alt={product.nombre}
-        className="product-image"
+        className={styles.productCard_image}
       />
-      <h3 className="product-title">{product.nombre}</h3>
-      <p className="old-price">${product.precioAnterior}</p>
-      <p className="new-price">${product.precio}</p>
-      <p className="discount">{product.descuento}% OFF</p>
-      <p className="transfer-price">
+      <h3 className={styles.productCard_title}>{product.nombre}</h3>
+      <p className={styles.productCard_oldPrice}>${product.precioAnterior}</p>
+      <p className={styles.productCard_newPrice}>${product.precio}</p>
+      <p className={styles.productCard_discount}>{product.descuento}% OFF</p>
+      <p className={styles.productCard_transferPrice}>
         ${product.precioTransferencia} con Transferencia o depósito
       </p>
-      <p className="stock-warning">¡Solo quedan {product.stock} en stock!</p>
-      <Button className="buy-button" text="+" onClick={sumarContador} />
-      <span> {cantidad} </span>
-      <Button className="buy-button" text="-" onClick={restarContador} />
-      <Button
-        className="buy-button"
-        text="Agergar al carrito"
-        onClick={agregarAlCarrito}
-      />
+      <p className={styles.productCard_stockWarning}>
+        ¡Solo quedan {product.stock} en stock!
+      </p>
+      <div className="productCard_agregarAlCarrito">
+        <div className="productCard_cantidad">
+          <Button
+            className={styles.productCard_buyButton}
+            text="+"
+            onClick={sumarContador}
+          />
+          <span className={styles.productCard_cantidadLabel}> {cantidad} </span>
+          <Button
+            className={styles.productCard_buyButton}
+            text="-"
+            onClick={restarContador}
+          />
+        </div>
+        <Button
+          className={styles.productCard_buyButton}
+          text="Agregar al carrito"
+          onClick={agregarAlCarrito}
+        />
+      </div>
     </div>
   );
 }
