@@ -1,5 +1,10 @@
 import "../assets/styles/App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { useState } from "react";
 import NavMenu from "../components/NavMenu";
 import Header from "../components/Header";
@@ -10,6 +15,8 @@ import Productos from "../pages/ProductList";
 import ProductosDetalle from "../pages/ProductsDetail";
 import Contacto from "../pages/Contact";
 import Carrito from "../pages/Carrito";
+import Admin from "../pages/Admin";
+import Login from "../pages/Login";
 import {
   dispararSweetBasico,
   dispararSweetConfirmacion,
@@ -19,6 +26,8 @@ function App() {
   const [products, setProducts] = useState([]);
   const [productosCarrito, setProductosCarrito] = useState([]);
   const [cantidades, setCantidades] = useState({});
+  const [usuarioLogeado, setUsuarioLogeado] = useState(false);
+  const [adminLogeado, setAdminLogeado] = useState(false);
 
   function agregarAlCarrito(producto, cantidad) {
     const yaExiste = productosCarrito.find((p) => p.id === producto.id);
@@ -52,12 +61,10 @@ function App() {
       const resultado = await dispararSweetConfirmacion();
 
       if (resultado.isConfirmed) {
-        
         setProductosCarrito((prevCarrito) =>
           prevCarrito.filter((producto) => producto.id !== id)
         );
 
-        
         setCantidades((prev) => {
           const nuevo = { ...prev };
           delete nuevo[id];
@@ -67,20 +74,21 @@ function App() {
         dispararSweetBasico(
           "success",
           "¡Eliminado!",
-          "El producto fue eliminado del carrito.","ok"
+          "El producto fue eliminado del carrito.",
+          "ok"
         );
       } else {
         dispararSweetBasico(
           "info",
           "Cancelado",
-          "El producto sigue en el carrito.","ok"
+          "El producto sigue en el carrito.",
+          "ok"
         );
       }
 
-      return; 
+      return;
     }
 
-    
     setCantidades((prev) => ({
       ...prev,
       [id]: prev[id] - 1,
@@ -91,22 +99,28 @@ function App() {
     <Router>
       <div className="app">
         <Header />
-        <NavMenu productos={productosCarrito} />
         <main className="main">
           <Routes>
-            <Route path="/" element={<Inicio />} />
-            <Route path="/nosotros" element={<Nosotros />} />
+            <Route path="/la-bruja-verde/" element={<Inicio />} />
+            <Route path="/la-bruja-verde/login" element={<Login />} />
+            <Route path="/la-bruja-verde/nosotros" element={<Nosotros />} />
             <Route
-              path="/productos"
-              element={<Productos productos={products} setProductos={setProducts} agregarAlCarrito={agregarAlCarrito} />}
+              path="/la-bruja-verde/productos"
+              element={
+                <Productos
+                  productos={products}
+                  setProductos={setProducts}
+                  agregarAlCarrito={agregarAlCarrito}
+                />
+              }
             />
             <Route
-              path="/productos/:id"
+              path="/la-bruja-verde/productos/:id"
               element={<ProductosDetalle agregarAlCarrito={agregarAlCarrito} />}
             />
-            <Route path="/contacto" element={<Contacto />} />
+            <Route path="/la-bruja-verde/contacto" element={<Contacto />} />
             <Route
-              path="/carrito"
+              path="/la-bruja-verde/carrito"
               element={
                 <Carrito
                   productos={productosCarrito}
@@ -116,9 +130,20 @@ function App() {
                 />
               }
             />
+            <Route
+              path="/la-bruja-verde/admin"
+              element={
+                adminLogeado ? (
+                  <Admin />
+                ) : (
+                  <Navigate to={"/la-bruja-verde/login"} replace />
+                )
+              }
+            />
           </Routes>
+          <Footer />
         </main>
-        <Footer />
+        <NavMenu productos={productosCarrito} />
       </div>
     </Router>
   );

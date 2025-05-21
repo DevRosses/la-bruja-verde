@@ -1,12 +1,8 @@
-
 import styles from "../assets/styles/components/ProductCard.module.css";
 import { Link } from "react-router-dom";
 import Button from "../components/ui/Button";
 
-
 export default function ProductCard({ product }) {
-
-
   return (
     <div key={product.id} className={styles.productCard}>
       <img
@@ -24,7 +20,7 @@ export default function ProductCard({ product }) {
       <p className={styles.productCard_stockWarning}>
         ¡Solo quedan {product.stock} en stock!
       </p>
-      <Link to={"/productos/" + product.id}>
+      <Link to={"/la-bruja-verde/productos/" + product.id}>
         <Button
           className={styles.productCard_buyButton}
           text="Ver mas detalles"

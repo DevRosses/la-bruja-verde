@@ -8,22 +8,22 @@ function NavMenu({ productos }) {
       <nav className={styles.NavMenu}>
         <ul className={styles.NavMenu_lista}>
           <li>
-            <Link to="/">
+            <Link to="/la-bruja-verde/">
               <FaBeer />
             </Link>
           </li>
           <li>
-            <Link to="/nosotros">Nosotros</Link>
+            <Link to="/la-bruja-verde/nosotros">Nosotros</Link>
           </li>
           <li>
-            <Link to="/productos">Productos</Link>
+            <Link to="/la-bruja-verde/productos">Productos</Link>
           </li>
 
           <li>
-            <Link to="/contacto">Contacto</Link>
+            <Link to="/la-bruja-verde/contacto">Contacto</Link>
           </li>
           <li>
-            <Link to="/carrito">
+            <Link to="/la-bruja-verde/carrito">
               Carrito
               {
                 <span className={styles.NavMenu_cantidadCarrito}>
