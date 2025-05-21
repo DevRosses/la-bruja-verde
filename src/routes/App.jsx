@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import Inicio from "../pages/Home";
 import Nosotros from "../pages/About";
 import Productos from "../pages/ProductList";
+import ProductosDetalle from "../pages/ProductsDetail";
 import Contacto from "../pages/Contact";
 import Carrito from "../pages/Carrito";
 import {
@@ -15,6 +16,7 @@ import {
 } from "../utils/SweetAlert";
 
 function App() {
+  const [products, setProducts] = useState([]);
   const [productosCarrito, setProductosCarrito] = useState([]);
   const [cantidades, setCantidades] = useState({});
 
@@ -50,12 +52,12 @@ function App() {
       const resultado = await dispararSweetConfirmacion();
 
       if (resultado.isConfirmed) {
-        // Eliminás del carrito
+        
         setProductosCarrito((prevCarrito) =>
           prevCarrito.filter((producto) => producto.id !== id)
         );
 
-        // Eliminás la cantidad del producto
+        
         setCantidades((prev) => {
           const nuevo = { ...prev };
           delete nuevo[id];
@@ -75,10 +77,10 @@ function App() {
         );
       }
 
-      return; // finaliza acá
+      return; 
     }
 
-    // Si hay más de 1, simplemente restás 1
+    
     setCantidades((prev) => ({
       ...prev,
       [id]: prev[id] - 1,
@@ -96,7 +98,11 @@ function App() {
             <Route path="/nosotros" element={<Nosotros />} />
             <Route
               path="/productos"
-              element={<Productos agregarAlCarrito={agregarAlCarrito} />}
+              element={<Productos productos={products} setProductos={setProducts} agregarAlCarrito={agregarAlCarrito} />}
+            />
+            <Route
+              path="/productos/:id"
+              element={<ProductosDetalle agregarAlCarrito={agregarAlCarrito} />}
             />
             <Route path="/contacto" element={<Contacto />} />
             <Route

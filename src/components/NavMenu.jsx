@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { FaBeer } from "react-icons/fa";
+import styles from "../assets/styles/components/NavMenu.module.css";
 
-function NavMenu(productos) {
+function NavMenu({ productos }) {
   return (
     <>
-      <nav>
-        <ul>
+      <nav className={styles.NavMenu}>
+        <ul className={styles.NavMenu_lista}>
           <li>
             <Link to="/">
               <FaBeer />
@@ -23,8 +24,13 @@ function NavMenu(productos) {
           </li>
           <li>
             <Link to="/carrito">
-              Carrito{" "}
-              <span> {productos.length > 0 ? productos.length : ""} </span>
+              Carrito
+              {
+                <span className={styles.NavMenu_cantidadCarrito}>
+                  {" "}
+                  {productos.length > 0 ? productos.length : "0"}{" "}
+                </span>
+              }
             </Link>
           </li>
         </ul>

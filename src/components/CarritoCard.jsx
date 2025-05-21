@@ -1,6 +1,7 @@
 import Button from "../components/ui/Button";
+import { Link } from "react-router-dom";
 
-import style from "../assets/styles/components/CarritoCard.module.css";
+import styles from "../assets/styles/components/CarritoCard.module.css";
 
 export default function CarritoCard({
   producto,
@@ -9,45 +10,41 @@ export default function CarritoCard({
   sumarContador,
 }) {
   return (
-    <div className={style.carritoCard}>
-      <h3 className={style.carritoCard_title}>{producto.nombre}</h3>
-      <div className="carritoCard_contenedorDescripcion">
-        <p className={style.carritoCard_descripcion}> {producto.descripcion}</p>
-      </div>
-      <img
-        src={producto.imagen}
-        alt={producto.nombre}
-        className={style.carritoCard_image}
-      />
-      <div>
-        <span className={style.carritoCard_cantidad}>
-          {cantidades[producto.id] || 1}
-        </span>
-      </div>
-      <div>
-        <p className={style.carritoCard_etiqueta}>Precio Unitario</p>
-        <span className={style.carritoCard_valor}>
-          ${Number(producto.precio).toFixed(2)}
-        </span>
-      </div>
+    <div className={styles.carritoCard}>
+      <Link to={"/productos/" + producto.id}>
+        <div>
+          <h3 className={styles.carritoCard_title}>{producto.nombre}</h3>
+          <img
+            src={producto.imagen}
+            alt={producto.nombre}
+            className={styles.carritoCard_image}
+          />
+        </div>
 
-      <div>
-        <p className={style.carritoCard_etiqueta}>Precio total</p>
-        <span className={style.carritoCard_valor}>
-  ${(cantidades[producto.id] * Number(producto.precio)).toFixed(2)}
-</span>
+        <div>
+          <span className={styles.carritoCard_cantidad}>
+            {cantidades[producto.id] || 1}
+          </span>
+          <p className={styles.carritoCard_etiqueta}>Precio Unitario</p>
+          <span className={styles.carritoCard_valor}>
+            ${Number(producto.precio).toFixed(2)}
+          </span>
+          <p className={styles.carritoCard_etiqueta}>Precio total</p>
+          <span className={styles.carritoCard_valor}>
+            ${(cantidades[producto.id] * Number(producto.precio)).toFixed(2)}
+          </span>
+        </div>
+      </Link>
 
-      </div>
-
-      <div className="carritoCard_contenedorButton">
+      <div className={styles.carritoCard_contenedorButton}>
         <Button
-          className={style.carritoCard_buyButton}
+          className={styles.carritoCard_buyButton}
           text="+"
           onClick={sumarContador}
         />
 
         <Button
-          className={style.carritoCard_buyButton}
+          className={styles.carritoCard_buyButton}
           text="-"
           onClick={restarContador}
         />

@@ -48,6 +48,75 @@ body {
   width: 90%;
 }
 
+link {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  margin: 0.5rem 0;
+}
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: var(--color-accent);
+}
+a:visited {
+  color: var(--color-text);
+}
+a:active {
+  color: var(--color-accent);
+}
+button {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: var(--color-accent);
+}
+button:disabled {
+  background-color: var(--color-border);
+  cursor: not-allowed;
+}
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+input,
+textarea {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-mobile);
+  line-height: var(--line-height);
+  color: var(--color-text);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-border);
+}
+
 /* BREAKPOINTS */
 
 /* Móviles grandes */
@@ -57,7 +126,7 @@ body {
   }
 
   .app {
-    background-color: red;
+    background-color: rgb(0, 238, 255);
   }
 
   .products-container {

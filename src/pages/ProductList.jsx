@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/ProductCard";
-import styles from "../assets/styles/components/ProductList.module.css";
+import styles from "../assets/styles/pages/ProductList.module.css";
 import { SpinnerCircularSplit } from "spinners-react";
 
 
-export default function ProductsList({ agregarAlCarrito }) {
-  const [productos, setProductos] = useState([]);
+export default function ProductsList({ agregarAlCarrito, setProductos, productos }) {
+  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -34,7 +34,7 @@ export default function ProductsList({ agregarAlCarrito }) {
   return (
     <section className={styles.productList_container}>
       {productos.map((producto) => (
-        <Card product={producto} agregarProducto={agregarAlCarrito} />
+        <Card  product={producto} agregarProducto={agregarAlCarrito} />
       ))}
     </section>
   );
