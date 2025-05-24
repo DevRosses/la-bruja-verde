@@ -23,6 +23,9 @@ function NavMenu({ productos }) {
             <Link to="/la-bruja-verde/contacto">Contacto</Link>
           </li>
           <li>
+            <Link to="/la-bruja-verde/login">Login</Link>
+          </li>
+          <li>
             <Link to="/la-bruja-verde/carrito">
               Carrito
               {

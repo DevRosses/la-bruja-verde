@@ -1,9 +1,13 @@
-function Login(setLogeadoUser, setLogeadoAdmin) {
+function Login({ setAdmin, setUser, user, admin }) {
   return (
     <>
       <h2>Login</h2>
-      <button onClick={setLogeadoUser}>Loguearse como usuario</button>
-      <button onClick={setLogeadoAdmin}>Loguearse como admin</button>
+      <button onClick={setUser}>
+        {user ? "Cerrar sesion" : "Iniciar sesion"}
+      </button>
+      <button onClick={setAdmin}>
+        {admin ? "Cerrar sesion admin" : "Iniciar sesion admin"}
+      </button>
     </>
   );
 }

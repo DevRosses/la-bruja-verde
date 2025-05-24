@@ -29,6 +29,32 @@ function App() {
   const [usuarioLogeado, setUsuarioLogeado] = useState(false);
   const [adminLogeado, setAdminLogeado] = useState(false);
 
+  function manejarAdmin() {
+    setAdminLogeado(!adminLogeado);
+    console.log("Admin logeado");
+    setUsuarioLogeado(false);
+    console.log("Usuario deslogeado");
+    dispararSweetBasico(
+      "success",
+      "¡Bienvenido Admin!",
+      "Ahora puedes gestionar los productos.",
+      "ok"
+    );
+  }
+
+  function manejarUser() {
+    setUsuarioLogeado(!usuarioLogeado);
+    console.log("Usuario logeado");
+    setAdminLogeado(false);
+    console.log("Admin deslogeado");
+    dispararSweetBasico(
+      "success",
+      "¡Bienvenido Usuario!",
+      "Ahora puedes comprar productos.",
+      "ok"
+    );
+  }
+
   function agregarAlCarrito(producto, cantidad) {
     const yaExiste = productosCarrito.find((p) => p.id === producto.id);
 
@@ -102,7 +128,14 @@ function App() {
         <main className="main">
           <Routes>
             <Route path="/la-bruja-verde/" element={<Inicio />} />
-            <Route path="/la-bruja-verde/login" element={<Login />} />
+            <Route
+              path="/la-bruja-verde/login"
+              element={<Login
+                user={usuarioLogeado}
+                admin={adminLogeado}
+                setAdmin={manejarAdmin}
+                setUser={manejarUser} />}
+            />
             <Route path="/la-bruja-verde/nosotros" element={<Nosotros />} />
             <Route
               path="/la-bruja-verde/productos"
