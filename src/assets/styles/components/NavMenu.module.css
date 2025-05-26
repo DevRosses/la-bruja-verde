@@ -32,7 +32,7 @@
   animation: slideUp 0.5s ease-out;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease-in-out;
-  
+  height: 60px;
 }
 
 /* Lista horizontal */
@@ -54,10 +54,18 @@
   animation: fadeInIcon 0.5s ease forwards;
 }
 
-.NavMenu_lista li:nth-child(1) a { animation-delay: 0.2s; }
-.NavMenu_lista li:nth-child(2) a { animation-delay: 0.3s; }
-.NavMenu_lista li:nth-child(3) a { animation-delay: 0.4s; }
-.NavMenu_lista li:nth-child(4) a { animation-delay: 0.5s; }
+.NavMenu_lista li:nth-child(1) a {
+  animation-delay: 0.2s;
+}
+.NavMenu_lista li:nth-child(2) a {
+  animation-delay: 0.3s;
+}
+.NavMenu_lista li:nth-child(3) a {
+  animation-delay: 0.4s;
+}
+.NavMenu_lista li:nth-child(4) a {
+  animation-delay: 0.5s;
+}
 
 /* Animación de íconos */
 @keyframes fadeInIcon {
