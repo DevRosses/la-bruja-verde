@@ -1,14 +1,6 @@
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import styles from "../assets/styles/components/NavMenu.module.css";
-/*import {
-  Home,
-  Users,
-  PackageSearch,
-  Phone,
-  LogIn,
-  ShoppingCart,
-} from "lucide-react";*/
 
 function NavMenu() {
   return (
