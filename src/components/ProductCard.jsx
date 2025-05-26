@@ -1,16 +1,22 @@
 import styles from "../assets/styles/components/ProductCard.module.css";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Button from "../components/ui/Button";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, index }) {
   return (
-    <div key={product.id} className={styles.productCard}>
+    <motion.div
+      className={styles.productCard}
+      initial={{ opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: index * 0.4, duration: 0.4 }}
+    >
       <img
         src={product.imagen}
         alt={product.nombre}
         className={styles.productCard_image}
       />
-      <h3 className={styles.productCard_title}>{product.nombre}</h3>
+      <h3 >{product.nombre}</h3>
       <p className={styles.productCard_oldPrice}>${product.precioAnterior}</p>
       <p className={styles.productCard_newPrice}>${product.precio}</p>
       <p className={styles.productCard_discount}>{product.descuento}% OFF</p>
@@ -22,11 +28,10 @@ export default function ProductCard({ product }) {
       </p>
       <Link to={"/la-bruja-verde/productos/" + product.id}>
         <Button
-          className={styles.productCard_buyButton}
           text="Ver mas detalles"
           onClick={() => {}}
         />
       </Link>
-    </div>
+    </motion.div>
   );
 }

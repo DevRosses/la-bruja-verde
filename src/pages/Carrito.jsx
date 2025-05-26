@@ -1,4 +1,4 @@
-import style from "../assets/styles/pages/Carrito.module.css";
+//import style from "../assets/styles/pages/Carrito.module.css";
 import Card from "../components/CarritoCard";
 
 export default function Carrito({
@@ -15,22 +15,32 @@ export default function Carrito({
   console.log("total desde carrito", total.toFixed(2));
 
   return (
-    <div className={style.carritoContainer}>
-      {productos.length > 0 ? (
-        productos.map((producto) => (
-          <Card
-            key={producto.id}
-            producto={producto}
-            cantidades={cantidades}
-            restarContador={() => restarContador(producto.id)}
-            sumarContador={() => sumarContador(producto.id)}
-          />
-        ))
-      ) : (
-        <p>Carrito vacío</p>
-      )}
+    <>
+      <div >
+        <h2>Estás a un paso de completar tu ritual.</h2>
+        <p>Revisá tus brebajes antes de continuar.</p>
+        {productos.length > 0 ? (
+          productos.map((producto) => (
+            <Card
+              key={producto.id}
+              producto={producto}
+              cantidades={cantidades}
+              restarContador={() => restarContador(producto.id)}
+              sumarContador={() => sumarContador(producto.id)}
+            />
+          ))
+        ) : (
+          <h2>Carrito vacío</h2>
+        )}
 
-      {total > 0 ? <p>Total: {total.toFixed(2)} $</p> : <></>}
-    </div>
+        {total > 0 ? <p>Total: {total.toFixed(2)} $</p> : <></>}
+      </div>
+      <div>
+        <button>
+          Finalizar compra
+          <button>Seguir explorando</button>
+        </button>
+      </div>
+    </>
   );
 }

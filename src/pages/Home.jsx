@@ -1,19 +1,21 @@
 import { FaStar } from "react-icons/fa";
-
 import Button from "../components/ui/Button";
-
+import { Navigate } from "react-router-dom";
 
 function Home() {
   const handleStar = () => {
-    alert("¡La bruja verde te da la bienvenida! ");
+    alert("¡La bruja verde te da la bienvenida!");
+    // Redirigir a la página de productos
+    return <Navigate to="/la-bruja-verde/productos" />;
   };
 
   return (
     <>
-      <h2 >Bienvenido al Home</h2>
-      <p>Esta es una aplicación de ejemplo para aprender React.</p>
-      <Button text="¡Haz clic aquí!" icon={<FaStar />} onClick={handleStar} />
-      <p>¡Gracias por visitarnos!</p>
+      <h2>Bienvenida al bosque de lo natural.</h2>
+      <p>
+        La magia está en los detalles. Cuidarte también puede ser un ritual.
+      </p>
+      <Button text="Explorá la magia" icon={<FaStar />} onClick={handleStar} />
     </>
   );
 }

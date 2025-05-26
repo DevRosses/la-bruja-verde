@@ -10,12 +10,12 @@ function Main() {
 
   return (
     <>
-      <main>
+      <main className="Main">
         <p>Esta es una aplicación de ejemplo para aprender React.</p>
         <Button text="¡Haz clic aquí!" icon={<FaStar />} onClick={handleStar} />
         <p>¡Gracias por visitarnos!</p>
         <Productos />
-        <ProductList/>
+        <ProductList />
       </main>
     </>
   );

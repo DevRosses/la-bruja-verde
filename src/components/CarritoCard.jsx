@@ -10,9 +10,9 @@ export default function CarritoCard({
   sumarContador,
 }) {
   return (
-    <div className={styles.carritoCard}>
+    <div className="container">
       <Link to={"/productos/" + producto.id}>
-        <div>
+        <div className="grid-1">
           <h3 className={styles.carritoCard_title}>{producto.nombre}</h3>
           <img
             src={producto.imagen}

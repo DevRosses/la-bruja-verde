@@ -1,33 +1,100 @@
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
-.NavMenu{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background-color: #333;
-  color: white;
+@keyframes slideLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Base NavMenu */
+.NavMenu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
-}
-
-.NavMenu_lista{
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  justify-content: center;
-}
-
-.NavMenu_lista li{
-  margin: 0 1rem;
-}
-
-.NavMenu_cantidadCarrito{
-  background-color: #ff0000;
-  color: white;
-  border-radius: 50%;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.8rem;
-}
-
+  background-color: #141414;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+  animation: slideUp 0.5s ease-out;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
   
+}
+
+/* Lista horizontal */
+.NavMenu_lista {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.NavMenu_lista li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInIcon 0.5s ease forwards;
+}
+
+.NavMenu_lista li:nth-child(1) a { animation-delay: 0.2s; }
+.NavMenu_lista li:nth-child(2) a { animation-delay: 0.3s; }
+.NavMenu_lista li:nth-child(3) a { animation-delay: 0.4s; }
+.NavMenu_lista li:nth-child(4) a { animation-delay: 0.5s; }
+
+/* Animación de íconos */
+@keyframes fadeInIcon {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* DESKTOP: barra lateral */
+@media screen and (min-width: 768px) {
+  .NavMenu {
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    height: 100vh;
+    animation: slideLeft 0.6s ease-out;
+    padding: 1rem 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .NavMenu_lista {
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .NavMenu_lista li a {
+    transform: translateX(-10px);
+    animation: fadeInIconDesktop 0.5s ease forwards;
+  }
+
+  @keyframes fadeInIconDesktop {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}

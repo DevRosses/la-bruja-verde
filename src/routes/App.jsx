@@ -1,4 +1,3 @@
-import "../assets/styles/App.css";
 import {
   BrowserRouter as Router,
   Routes,
@@ -6,6 +5,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { useState } from "react";
+
 import NavMenu from "../components/NavMenu";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -17,6 +17,7 @@ import Contacto from "../pages/Contact";
 import Carrito from "../pages/Carrito";
 import Admin from "../pages/Admin";
 import Login from "../pages/Login";
+import Ritual from "../pages/Ritual";
 import {
   dispararSweetBasico,
   dispararSweetConfirmacion,
@@ -122,63 +123,68 @@ function App() {
   }
 
   return (
-    <Router>
-      <div className="app">
-        <Header />
-        <main className="main">
-          <Routes>
-            <Route path="/la-bruja-verde/" element={<Inicio />} />
-            <Route
-              path="/la-bruja-verde/login"
-              element={<Login
+    <div className="app">
+      <Header productos={productosCarrito} />
+      <main className="main">
+        <Routes>
+          <Route path="/la-bruja-verde/" element={<Inicio />} />
+          <Route
+            path="/la-bruja-verde/login"
+            element={
+              <Login
                 user={usuarioLogeado}
                 admin={adminLogeado}
                 setAdmin={manejarAdmin}
-                setUser={manejarUser} />}
-            />
-            <Route path="/la-bruja-verde/nosotros" element={<Nosotros />} />
-            <Route
-              path="/la-bruja-verde/productos"
-              element={
-                <Productos
-                  productos={products}
-                  setProductos={setProducts}
-                  agregarAlCarrito={agregarAlCarrito}
-                />
-              }
-            />
-            <Route
-              path="/la-bruja-verde/productos/:id"
-              element={<ProductosDetalle agregarAlCarrito={agregarAlCarrito} />}
-            />
-            <Route path="/la-bruja-verde/contacto" element={<Contacto />} />
-            <Route
-              path="/la-bruja-verde/carrito"
-              element={
-                <Carrito
-                  productos={productosCarrito}
-                  cantidades={cantidades}
-                  restarContador={restarContador}
-                  sumarContador={sumarContador}
-                />
-              }
-            />
-            <Route
-              path="/la-bruja-verde/admin"
-              element={
-                adminLogeado ? (
-                  <Admin />
-                ) : (
-                  <Navigate to={"/la-bruja-verde/login"} replace />
-                )
-              }
-            />
-          </Routes>
-          <Footer />
-        </main>
-        <NavMenu productos={productosCarrito} />
-      </div>
-    </Router>
+                setUser={manejarUser}
+              />
+            }
+          />
+          <Route path="/la-bruja-verde/conocenos" element={<Nosotros />} />
+          <Route
+            path="/la-bruja-verde/productos"
+            element={
+              <Productos
+                productos={products}
+                setProductos={setProducts}
+                agregarAlCarrito={agregarAlCarrito}
+              />
+            }
+          />
+          <Route
+            path="/la-bruja-verde/productos/:id"
+            element={<ProductosDetalle agregarAlCarrito={agregarAlCarrito} />}
+          />
+
+          <Route path="/la-bruja-verde/ritual" element={<Ritual />} />
+
+          <Route path="/la-bruja-verde/contacto" element={<Contacto />} />
+
+          <Route
+            path="/la-bruja-verde/carrito"
+            element={
+              <Carrito
+                productos={productosCarrito}
+                cantidades={cantidades}
+                restarContador={restarContador}
+                sumarContador={sumarContador}
+              />
+            }
+          />
+          <Route
+            path="/la-bruja-verde/admin"
+            element={
+              adminLogeado ? (
+                <Admin />
+              ) : (
+                <Navigate to={"/la-bruja-verde/login"} replace />
+              )
+            }
+          />
+        </Routes>
+        <Footer />
+      </main>
+      <NavMenu />
+    </div>
   );
 }
 

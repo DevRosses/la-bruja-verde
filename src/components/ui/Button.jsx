@@ -1,4 +1,4 @@
-import styles from "../../assets/styles/ui/Button.module.css";
+
 
 function Button({
   text,
@@ -13,9 +13,9 @@ function Button({
       type={type}
       disabled={disabled}
       onClick={onClick}
-      className={`${styles.button} ${className}`}
+      className={`btn ${className}`}
     >
-      {icon && <span className={styles.icon}>{icon}</span>}
+      {icon && <span>{icon}</span>}
       {text}
     </button>
   );

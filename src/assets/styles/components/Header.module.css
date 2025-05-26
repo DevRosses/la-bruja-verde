@@ -1,0 +1,72 @@
+.Header {
+  position: sticky; /* Cambiado de fixed a sticky */
+  top: 0;
+  width: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+  font-size: var(--font-size-heading-lg);
+  height: 80px; 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Header_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+
+.Header_contenido {
+  display: flex;
+  align-items: center;
+  width: auto;
+  margin: 0 ;
+}
+
+.Header_titulo {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-heading);
+  font-size: var(--font-size-heading-xl);
+}
+
+.headerMenu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+/* Bubble del carrito */
+.cantidadCarrito {
+  background-color: #ee5c5c;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size: 0.75rem;
+  position: absolute;
+  top: -8px;
+  right: -10px;
+}
+
+@media screen and (min-width: 768px) {
+  .Header {
+    padding: var(--space-3) var(--space-6);
+    
+  }
+  .Header_titulo {
+    font-size: var(--font-size-heading);
+    margin-left: var(--space-7);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+
+
+}

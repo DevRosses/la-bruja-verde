@@ -1,0 +1,132 @@
+@import "./variables.css";
+
+/* RESET GENERAL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ESTILOS GENERALES */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-body);
+  line-height: 1.8;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-weight-heading);
+  color: var(--color-text);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: var(--font-body);
+  padding: var(--space-2) var(--space-4);
+  border: none;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #315b3b;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--color-bg);
+  transition: fill 0.3s ease;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  position: relative;
+}
+
+.main {
+  flex: 1;
+  padding: var(--space-4) var(--space-4);
+  padding-bottom: 80px; /* Espacio para el nav inferior */
+  padding-top: 80px; /* Espacio para el header sticky */
+}
+
+/* GRID RESPONSIVE 
+.container {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-2);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-3);
+}
+
+.section {
+  padding: var(--space-4) 0;
+}
+  */
+
+@media screen and (min-width: 768px) {
+  .main {
+    margin: 0 0 0 var(--space-5);
+    padding-left: var(--space-7);
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .main {
+    margin: 0 0 0 var(--space-6);
+    padding-bottom: 0;
+  }
+}
+
+/* ANIMACIONES SUAVES */
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInIconDesktop {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
