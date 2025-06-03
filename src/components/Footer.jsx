@@ -1,18 +1,25 @@
-import '../assets/styles/components/Footer.module.css';
+
+import styles from '../assets/styles/components/Footer.module.css';
 
 function Footer() {
   return (
     <footer>
-      <h2>La Bruja Verde</h2>
-      <p>Cosmética natural. Ritual consciente.</p>
-      <div>
-        <ul>
-          <li>Política de privacidad</li>
-          <li>Términos y condiciones</li>
-          <li>Redes sociales</li>
-        </ul>
+      <div className={styles.footer_info}>
+        <div className={styles.footer_logo}>
+          <h2>La Bruja Verde</h2>
+          <p>Cosmética natural. <br /> Ritual consciente.</p>
+        </div>
+
+        <div className={styles.footer_links}>
+          <ul>
+            <li>Política de privacidad</li>
+            <li>Términos y condiciones</li>
+            <li>Redes sociales</li>
+          </ul>
+        </div>
       </div>
-      <p>&copy; 202 - DevRosses</p>
+
+      <p className={styles.copy}>&copy; 2025 - DevRosses</p>
     </footer>
   );
 }

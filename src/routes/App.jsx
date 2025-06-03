@@ -4,8 +4,6 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../contexts/AuthContext";
 import ProtectedRoute from "../routes/ProtectedRoute";
 import NavMenu from "../components/NavMenu";
 import Header from "../components/Header";
@@ -16,16 +14,12 @@ import Productos from "../pages/ProductList";
 import ProductosDetalle from "../pages/ProductsDetail";
 import Contacto from "../pages/Contact";
 import Carrito from "../pages/Carrito";
-import Admin from "../pages/Admin";
 import Login from "../pages/Login";
 import Ritual from "../pages/Ritual";
 import Dashboard from "../pages/Dashboard";
 
-
 function App() {
-  
-  const { user  } =
-    useContext(AuthContext);
+ 
 
   return (
     <div className="app">
@@ -54,19 +48,10 @@ function App() {
           <Route path="/la-bruja-verde/contacto" element={<Contacto />} />
 
           <Route path="/la-bruja-verde/carrito" element={<Carrito />} />
-          <Route
-            path="/la-bruja-verde/admin"
-            element={
-              user ? (
-                <Admin />
-              ) : (
-                <Navigate to={"/la-bruja-verde/login"} replace />
-              )
-            }
-          />
+  
         </Routes>
-        <Footer />
       </main>
+      <Footer />
       <NavMenu />
     </div>
   );
