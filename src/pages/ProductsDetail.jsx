@@ -2,13 +2,15 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "../assets/styles/pages/ProductsDetail.module.css";
 import Button from "../components/ui/Button";
-import { SpinnerCircularSplit } from "spinners-react";
+import { useContext } from "react";
+import { CarritoContext } from "../contexts/CarritoContext"; 
 
-function ProductsDetail({ agregarAlCarrito }) {
+function ProductsDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [cantidad, setCantidad] = useState(1);
   
+  const { agregarAlCarrito } = useContext(CarritoContext);
 
   useEffect(() => {
     fetch(`https://681d76fff74de1d219afd7e6.mockapi.io/api/v1/productos/${id}`)

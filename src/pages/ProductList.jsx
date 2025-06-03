@@ -1,41 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import Card from "../components/ProductCard";
 import styles from "../assets/styles/pages/ProductList.module.css";
 import { SpinnerCircularSplit } from "spinners-react";
+import { CarritoContext } from "../contexts/CarritoContext";
 
 
-export default function ProductsList({  setProductos, productos }) {
-  
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export default function ProductsList() {
+
+  const { loading, error, productos } = useContext(CarritoContext);
 
 
-
-
-  useEffect(() => {
-    fetch("https://681d76fff74de1d219afd7e6.mockapi.io/api/v1/productos")
-      .then((res) => res.json())
-      .then((data) => {
-        setProductos(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching products:", error);
-        setError(error);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) return (
-    <>
-      <SpinnerCircularSplit />
-      <p>Cargando productos...</p>
-    </>
-  );
+ 
+  if (loading)
+    return (
+      <>
+        <SpinnerCircularSplit />
+        <p>Cargando productos...</p>
+      </>
+    );
   if (error) return <p>Error al cargar productos: {error.message}</p>;
-
-
-  
 
   return (
     <section className={styles.productList}>
@@ -50,11 +33,7 @@ export default function ProductsList({  setProductos, productos }) {
       </div>
       <div className={styles.productCarousel}>
         {productos.map((producto, index) => (
-          <Card
-            key={producto.id}
-            product={producto}
-            index={index}
-          />
+          <Card key={producto.id} product={producto} index={index} />
         ))}
       </div>
     </section>

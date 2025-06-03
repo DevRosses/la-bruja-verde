@@ -1,8 +1,13 @@
 import styles from '../assets/styles/components/Header.module.css'
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { useContext } from 'react';
+import { CarritoContext } from "../contexts/CarritoContext"; 
 
-function Header({ productos }) {
+function Header() {
+
+  const { productosCarrito } = useContext(CarritoContext);
+
   return (
     <header className={styles.Header}>
       <div className={styles.Header_wrapper}>
@@ -19,7 +24,7 @@ function Header({ productos }) {
           <Link to="/la-bruja-verde/carrito">
             <Icon icon="icon-park-outline:shopping-bag" width="24" />
             <span className={styles.cantidadCarrito}>
-              {productos.length > 0 ? productos.length : "0"}
+              {productosCarrito.length > 0 ? productosCarrito.length : "0"}
             </span>
           </Link>
         </div>

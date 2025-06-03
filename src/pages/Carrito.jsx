@@ -1,14 +1,13 @@
-//import style from "../assets/styles/pages/Carrito.module.css";
+import { useContext } from "react";
 import Card from "../components/CarritoCard";
+import { CarritoContext } from "../contexts/CarritoContext";
 
-export default function Carrito({
-  productos,
-  cantidades,
-  restarContador,
-  sumarContador,
-}) {
+export default function Carrito() {
+  const { productosCarrito, cantidades, restarContador, sumarContador } =
+    useContext(CarritoContext);
+
   // Calcular el total del carrito
-  const total = productos.reduce((subTotal, producto) => {
+  const total = productosCarrito.reduce((subTotal, producto) => {
     return subTotal + producto.precio * (cantidades[producto.id] || 1);
   }, 0);
 
@@ -16,11 +15,11 @@ export default function Carrito({
 
   return (
     <>
-      <div >
+      <div>
         <h2>Estás a un paso de completar tu ritual.</h2>
         <p>Revisá tus brebajes antes de continuar.</p>
-        {productos.length > 0 ? (
-          productos.map((producto) => (
+        {productosCarrito.length > 0 ? (
+          productosCarrito.map((producto) => (
             <Card
               key={producto.id}
               producto={producto}
@@ -36,10 +35,8 @@ export default function Carrito({
         {total > 0 ? <p>Total: {total.toFixed(2)} $</p> : <></>}
       </div>
       <div>
-        <button>
-          Finalizar compra
-          <button>Seguir explorando</button>
-        </button>
+        <button>Finalizar compra</button>
+        <button>Seguir explorando</button>
       </div>
     </>
   );

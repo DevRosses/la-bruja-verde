@@ -1,22 +1,43 @@
-function Login({ setAdmin, setUser, user, admin }) {
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../contexts/AuthContext";
+function Login() {
+  const [usuario, setUsuario] = useState("");
+  const [password, setPassword] = useState("");
+  const { login } = useAuthContext();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Simulación de autenticación
+    if (usuario === "admin" && password === "1234") {
+      login(usuario);
+      navigate("/dashboard");
+    } else {
+      alert("Credenciales incorrectas");
+    }
+  };
   return (
-    <>
-      <h2>Ingresá al círculo.</h2>
-      <p>Tu cuenta, tus rituales, tus favoritos.</p>
+    <form onSubmit={handleSubmit}>
+      <h2>Iniciar sesión</h2>
       <div>
-        <button onClick={setUser}>
-          {user ? "Cerrar sesión" : "Iniciar sesión"}
-        </button>
-        <button onClick={setAdmin}>
-          {admin ? "Cerrar sesión admin" : "Iniciar sesión admin"}
-        </button>
+        <label>Usuario:</label>
+        <input
+          type="text"
+          value={usuario}
+          onChange={(e) => setUsuario(e.target.value)}
+        />
       </div>
       <div>
-        <p>¿Aún no tenés cuenta?</p>
-        <button>Unite al aquelarre.</button>
+        <label>Contraseña:</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
       </div>
-    </>
+      <button type="submit">Iniciar sesión</button>
+    </form>
   );
 }
-
 export default Login;
