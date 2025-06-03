@@ -22,7 +22,7 @@ export default function ProductsList() {
 
   return (
     <section className={styles.productList}>
-      <div className="productInfo">
+      <div className={styles.productInfo}>
         <h2>
           Nuestros hechizos están en frascos. Cada producto tiene una intención:
           hidratar, proteger, sanar.

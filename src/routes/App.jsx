@@ -5,7 +5,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import ProtectedRoute from "../routes/ProtectedRoute";
-import NavMenu from "../components/NavMenu";
+import NavMenu from "../components/NavMenu2";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Inicio from "../pages/Home";

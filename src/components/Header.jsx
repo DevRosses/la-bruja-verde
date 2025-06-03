@@ -1,11 +1,11 @@
-import styles from '../assets/styles/components/Header.module.css'
+import styles from "../assets/styles/components/Header.module.css";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
-import { useContext } from 'react';
-import { CarritoContext } from "../contexts/CarritoContext"; 
+import { useContext } from "react";
+import { CarritoContext } from "../contexts/CarritoContext";
+import Button from "./ui/Button";
 
 function Header() {
-
   const { productosCarrito } = useContext(CarritoContext);
 
   return (
