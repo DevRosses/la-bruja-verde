@@ -6,6 +6,8 @@ import {
 
 export const CarritoContext = createContext();
 
+
+
 export function CarritoProvider({ children }) {
   const [productos, setProductos] = useState([]);
   const [productosCarrito, setProductosCarrito] = useState([]);

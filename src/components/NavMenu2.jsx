@@ -3,6 +3,7 @@ import { Icon } from "@iconify/react";
 import styles from "../assets/styles/components/NavMenu.module.css";
 import { useState } from "react";
 
+
 function NavMenu2() {
   const navBar = [
     { to: "/la-bruja-verde/", icon: "hugeicons:castle-01" },
