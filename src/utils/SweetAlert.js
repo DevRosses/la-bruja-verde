@@ -1,31 +1,45 @@
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
 
-export function dispararSweetBasico(icono, titulo, texto, textoBoton) {
-  Swal.fire({
-    icon: icono,
-    title: titulo,
-    text: texto,
-    confirmButtonText: textoBoton,
+const swalBaseConfig = {
+  customClass: {
+    popup: "swal2-root",
+    confirmButton: "swal2-confirm",
+    cancelButton: "swal2-cancel",
+    title: "swal2-title",
+    content: "swal2-content",
+  },
+  background: "var(--color-bg)",
+  color: "var(--color-text)",
+  confirmButtonColor: "var(--color-primary)",
+  cancelButtonColor: "#aaa",
+  buttonsStyling: false,
+  showClass: {
+    popup: "fade-in",
+  },
+  hideClass: {
+    popup: "",
+  },
+};
+
+export function dispararSweetBasico(icon, title, text, confirmButtonText) {
+  return Swal.fire({
+    ...swalBaseConfig,
+    icon,
+    title,
+    text,
+    confirmButtonText,
   });
 }
 
-const swalWithBootstrapButtons = Swal.mixin({
-  customClass: {
-    confirmButton: "btn btn-success",
-    cancelButton: "btn btn-danger",
-  },
-  buttonsStyling: false,
-});
-
 export function dispararSweetConfirmacion() {
-  return swalWithBootstrapButtons.fire({
-    title: "¿Estás seguro?",
-    text: "Estas eliminando el producto del carrito.",
+  return Swal.fire({
+    ...swalBaseConfig,
     icon: "warning",
+    title: "¿Estás seguro?",
+    text: "Esta acción no se puede deshacer.",
     showCancelButton: true,
     confirmButtonText: "Sí, eliminar",
-    cancelButtonText: "No, cancelar",
-    reverseButtons: true,
+    cancelButtonText: "Cancelar",
   });
 }

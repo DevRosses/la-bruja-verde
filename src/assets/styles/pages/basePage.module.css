@@ -1,0 +1,47 @@
+/*
+  Unificación de estilos para páginas, usando variables root y clases utilitarias.
+  Aplica a todos los textos, contenedores y layouts.
+*/
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-3); /* Más padding para aire visual */
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  border-radius: var(--radius-default);
+  box-shadow: var(--shadow-default);
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.page-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-heading);
+  font-weight: var(--font-weight-heading);
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+  text-align: center;
+}
+
+.page-content {
+  font-size: var(--font-size-body);
+  color: var(--color-text);
+  line-height: 1.7;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: var(--space-4) var(--space-1);
+    gap: var(--space-3);
+  }
+  .page-title {
+    font-size: var(--font-size-body);
+  }
+}

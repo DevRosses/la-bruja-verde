@@ -1,5 +1,7 @@
 import Button from "../components/ui/Button";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CarritoContext } from "../contexts/CarritoContext";
 
 import styles from "../assets/styles/components/CarritoCard.module.css";
 
@@ -9,6 +11,7 @@ export default function CarritoCard({
   restarContador,
   sumarContador,
 }) {
+  const { eliminarDelCarrito } = useContext(CarritoContext);
   return (
     <div className="container">
       <Link to={"/productos/" + producto.id}>
@@ -47,6 +50,12 @@ export default function CarritoCard({
           className={styles.carritoCard_buyButton}
           text="-"
           onClick={restarContador}
+        />
+
+        <Button
+          className={styles.carritoCard_buyButton}
+          text="Eliminar"
+          onClick={() => eliminarDelCarrito(producto.id)}
         />
       </div>
     </div>

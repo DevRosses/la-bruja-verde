@@ -1,16 +1,20 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "../assets/styles/pages/ProductsDetail.module.css";
 import Button from "../components/ui/Button";
 import { useContext } from "react";
-import { CarritoContext } from "../contexts/CarritoContext"; 
+import { CarritoContext } from "../contexts/CarritoContext";
+import { useUserData } from "../contexts/UserDataContext";
+import HeartIcon from "../components/ui/HeartIcon";
 
 function ProductsDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState(null);
   const [cantidad, setCantidad] = useState(1);
-  
   const { agregarAlCarrito } = useContext(CarritoContext);
+  const { favorites, toggleFavorite } = useUserData();
+  const isFavorite = favorites.some((p) => p.id === product.id);
 
   useEffect(() => {
     fetch(`https://681d76fff74de1d219afd7e6.mockapi.io/api/v1/productos/${id}`)
@@ -38,16 +42,25 @@ function ProductsDetail() {
     }
     agregarAlCarrito(product, cantidad);
     setCantidad(1);
+    navigate("/la-bruja-verde/productos"); // Siempre vuelve al listado
   }
 
   return (
     <div key={product.id} className={styles.productCard}>
-      <img
-        src={product.imagen}
-        alt={product.nombre}
-        className={styles.productCard_image}
-      />
-
+      <div className={styles.productCard_imageWrapper}>
+        <img
+          src={product.imagen}
+          alt={product.nombre}
+          className={styles.productCard_image}
+        />
+      </div>
+      <button
+        className={styles.favoriteBtn}
+        aria-label={isFavorite ? "Quitar de favoritos" : "Agregar a favoritos"}
+        onClick={() => toggleFavorite(product)}
+      >
+        <HeartIcon filled={isFavorite} />
+      </button>
       <h3 className={styles.productCard_title}>{product.nombre}</h3>
       <p className={styles.productCard_descripcion}>${product.descripcion}</p>
       <p className={styles.productCard_oldPrice}>${product.precioAnterior}</p>

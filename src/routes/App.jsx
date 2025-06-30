@@ -5,6 +5,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import ProtectedRoute from "../routes/ProtectedRoute";
+import PublicRoute from "../routes/PublicRoute";
 import NavMenu from "../components/NavMenu2";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -23,13 +24,14 @@ function App() {
 
   return (
     <div className="app">
+      
       <Header />
       <main className="main">
         <Routes>
           <Route path="/la-bruja-verde/" element={<Inicio />} />
-          <Route path="/la-bruja-verde/login" element={<Login />} />
+          <Route path="/la-bruja-verde/login" element={<PublicRoute><Login /></PublicRoute>} />
           <Route
-            path="/dashboard"
+            path="/la-bruja-verde/dashboard"
             element={
               <ProtectedRoute>
                 <Dashboard />

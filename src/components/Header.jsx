@@ -19,34 +19,38 @@ function Header() {
     <header className={styles.Header}>
       <div className={styles.Header_wrapper}>
         <div className={styles.Header_contenido}>
-          <h1 className={styles.Header_titulo}>La Bruja Verde</h1>
+          <Link to="/la-bruja-verde/" className={styles.Header_tituloLink}>
+            <h1 className={styles.Header_titulo}>La Bruja Verde</h1>
+          </Link>
         </div>
-
         <div className={styles.headerMenu}>
           {user ? (
             <div className={styles.userInfo}>
-              <Icon icon="mdi:account" width="24" className={styles.userIcon} />
-              <span className={styles.nombreUsuario}>Hola, {user}</span>
+              <Icon icon="mdi:account" className={styles.userIcon} />
+              <span className={styles.nombreUsuario}>
+                Hola, <span className={styles.userName}>{user}</span>
+              </span>
               <button
                 className={styles.logoutButton}
                 onClick={handleLogout}
                 title="Cerrar sesión"
               >
-                <Icon icon="mdi:logout" width="20" />
+                <Icon icon="mdi:logout" />
               </button>
             </div>
           ) : (
-            <button className={styles.Header_accion}>
-              <Link to="/la-bruja-verde/login">
-                <Icon icon="mdi:account-lock-outline" width="24" />
-              </Link>
-            </button>
+            <Link to="/la-bruja-verde/login" className={styles.Header_accion}>
+              <Icon icon="mdi:account-lock-outline" />
+            </Link>
           )}
-
-          <Link to="/la-bruja-verde/carrito">
-            <Icon icon="icon-park-outline:shopping-bag" width="24" />
-            <span className={styles.cantidadCarrito}>
-              {productosCarrito.length > 0 ? productosCarrito.length : "0"}
+          <Link to="/la-bruja-verde/carrito" className={styles.carritoLink}>
+            <span className={styles.carritoIconWrapper}>
+              <Icon icon="icon-park-outline:shopping-bag" />
+              {productosCarrito.length > 0 && (
+                <span className={styles.cantidadCarrito}>
+                  {productosCarrito.length}
+                </span>
+              )}
             </span>
           </Link>
         </div>

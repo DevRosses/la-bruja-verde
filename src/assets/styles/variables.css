@@ -4,6 +4,8 @@
   --color-bg: #f8f5f2;
   --color-text: #1c1c1c;
   --color-primary: #2f8645;
+  --color-gray: #999999; /* Secundario, precios tachados, textos secundarios */
+  --color-gray-light: #cccccc; /* Bordes, separadores sutiles */
 
   /* Tipografía */
   --font-heading: "Playfair Display", serif;
@@ -26,4 +28,7 @@
 
   /* Border radius */
   --radius-default: 8px;
+
+  /* Sombra estándar */
+  --shadow-default: 0 2px 8px rgba(0, 0, 0, 0.08);
 }

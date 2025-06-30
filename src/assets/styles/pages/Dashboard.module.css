@@ -1,0 +1,74 @@
+/* Dashboard.module.css - Estilos atómicos y profesionales para el dashboard */
+.dashboard {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-3);
+  background: var(--color-bg);
+  border-radius: var(--radius-default);
+  box-shadow: var(--shadow-default);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.dashboard_welcome {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-heading);
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+  text-align: center;
+}
+
+.dashboard_quicklinks {
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dashboard_card {
+  background: var(--color-bg);
+  border-radius: var(--radius-default);
+  box-shadow: var(--shadow-default);
+  padding: var(--space-4) var(--space-3);
+  min-width: 180px;
+  text-align: center;
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  transition: box-shadow 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+.dashboard_card:hover {
+  box-shadow: 0 4px 16px rgba(47,134,69,0.12);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.dashboard_section {
+  width: 100%;
+  background: var(--color-bg);
+  border-radius: var(--radius-default);
+  box-shadow: var(--shadow-default);
+  padding: var(--space-4) var(--space-3);
+  margin-top: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    padding: var(--space-4) var(--space-1);
+    gap: var(--space-3);
+  }
+  .dashboard_quicklinks {
+    gap: var(--space-2);
+  }
+  .dashboard_card {
+    min-width: 120px;
+    padding: var(--space-3) var(--space-2);
+  }
+}

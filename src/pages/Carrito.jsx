@@ -3,15 +3,13 @@ import Card from "../components/CarritoCard";
 import { CarritoContext } from "../contexts/CarritoContext";
 
 export default function Carrito() {
-  const { productosCarrito, cantidades, restarContador, sumarContador } =
-    useContext(CarritoContext);
-
-  // Calcular el total del carrito
-  const total = productosCarrito.reduce((subTotal, producto) => {
-    return subTotal + producto.precio * (cantidades[producto.id] || 1);
-  }, 0);
-
-  console.log("total desde carrito", total.toFixed(2));
+  const {
+    productosCarrito,
+    cantidades,
+    restarContador,
+    sumarContador,
+    totalCarrito,
+  } = useContext(CarritoContext);
 
   return (
     <>
@@ -32,7 +30,7 @@ export default function Carrito() {
           <h2>Carrito vacío</h2>
         )}
 
-        {total > 0 ? <p>Total: {total.toFixed(2)} $</p> : <></>}
+        {totalCarrito > 0 ? <p>Total: {totalCarrito.toFixed(2)} $</p> : <></>}
       </div>
       <div>
         <button>Finalizar compra</button>
